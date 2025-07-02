@@ -1,0 +1,493 @@
+/*header section específico de participantes*/
+.hero_area {
+    position: relative;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.hero_area .hero_bg_box {
+    background-color: #150b63;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    overflow: hidden;
+    z-index: -1;
+}
+
+#toggleFiltrosRespuestasBtn {
+    cursor: pointer;
+    transition: color 0.2s, transform 0.3s;
+    margin-right: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+#filtrosAvanzadosRespuestas {
+    background-color: white;
+    max-height: 0;
+    opacity: 0;
+    min-height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid #150b63;
+    box-shadow: 0 2px 8px rgba(21, 11, 99, 0.06);
+    transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+
+#filtrosAvanzadosRespuestas.show {
+    max-height: 300px;
+    opacity: 1;
+}
+
+#filtrosAvanzadosRespuestas {
+    background-color: white;
+    max-height: 0;
+    opacity: 0;
+    min-height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid #150b63;
+    box-shadow: 0 2px 8px rgba(21, 11, 99, 0.06);
+    transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+
+#filtrosAvanzadosRespuestas.show {
+    max-height: 300px;
+    opacity: 1;
+}
+
+#filtrosAvanzados.visible {
+    opacity: 1;
+}
+
+.custom-select-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Selects custom */
+.filtro-select {
+    border: none !important;
+    border-radius: 18px !important;
+    background-color: white !important;
+    min-width: 120px;
+    max-width: 260px;
+    /* Ajusta este valor según tu preferencia visual */
+    width: auto;
+    padding-right: 2.5rem !important;
+    box-shadow: none !important;
+    font-size: 1rem;
+    color: #333;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.filtro-select:hover {
+    cursor: pointer;
+}
+
+.filtro-select:focus {
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.filtro-select option {
+    color: #333;
+}
+
+.col-md-3 {
+    margin-top: 5px;
+}
+
+/* Flecha estática */
+.custom-select-wrapper::after {
+    content: '\f282';
+    /* Bootstrap icon bi-caret-down-fill */
+    font-family: 'bootstrap-icons';
+    position: absolute;
+    right: 1rem;
+    pointer-events: none;
+    color: #00bbf0;
+    font-size: 1.1rem;
+}
+
+/* 5. Ajustes de layout para filtros avanzados */
+#filtroRespuestas {
+    display: flex;
+    min-width: 70%;
+    justify-content: center;
+    gap: 10px 0;
+}
+
+#filtroRespuestas .col-md-3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 8px;
+    padding-right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 1 auto;
+    min-width: 120px;
+    max-width: 280px;
+}
+
+@media (max-width: 768px) {
+    #filtroRespuestas {
+        gap: 4px 0;
+    }
+
+    #filtroRespuestas .col-md-3 {
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+}
+
+/* 6. Ajustes de layout para el contenedor principal */
+.min-vh-100.bg-light {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+/* Sombra solo en el borde superior del footer */
+.shadow-top {
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Paginación Bootstrap 5 personalizada */
+.paginacion-bootstrap5 .pagination {
+    --bs-pagination-padding-x: 0.75rem;
+    --bs-pagination-padding-y: 0.5rem;
+    --bs-pagination-font-size: 1rem;
+    --bs-pagination-color: #150b63;
+    --bs-pagination-bg: #fff;
+    --bs-pagination-border-width: 1px;
+    --bs-pagination-border-color: #dee2e6;
+    --bs-pagination-border-radius: 0.375rem;
+    --bs-pagination-hover-color: #fff;
+    --bs-pagination-hover-bg: #00bbf0;
+    --bs-pagination-hover-border-color: #00bbf0;
+    --bs-pagination-focus-color: #fff;
+    --bs-pagination-focus-bg: #00bbf0;
+    --bs-pagination-active-bg: #150b63;
+    --bs-pagination-active-border-color: #150b63;
+    --bs-pagination-active-color: #fff;
+    gap: 0.25rem;
+}
+
+.paginacion-bootstrap5 .page-item .page-link {
+    border-radius: 0.375rem !important;
+    margin: 0 2px;
+    color: #150b63;
+    border: 1px solid #dee2e6;
+    background: #fff;
+    transition: background 0.2s, color 0.2s;
+}
+
+.paginacion-bootstrap5 .page-item.active .page-link,
+.paginacion-bootstrap5 .page-item .page-link:focus,
+.paginacion-bootstrap5 .page-item .page-link:active {
+    background: #150b63;
+    color: #fff;
+    border-color: #150b63;
+}
+
+.paginacion-bootstrap5 .page-item.disabled .page-link {
+    color: #adb5bd;
+    background: #f8f9fa;
+    border-color: #dee2e6;
+    pointer-events: none;
+}
+
+.paginacion-bootstrap5 .page-link:hover {
+    background: #00bbf0;
+    color: #fff;
+    border-color: #00bbf0;
+}
+
+.paginacion-bootstrap5 .text-sm {
+    font-size: 0.95rem;
+}
+
+@media (max-width: 576px) {
+    .paginacion-bootstrap5 .d-flex.flex-column.flex-sm-row {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+    }
+
+    .paginacion-bootstrap5 .pagination {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* Por defecto no mostrar el footer de paginación */
+#paginacionRespuestasWrapper {
+    display: none;
+    margin-top: auto;
+}
+
+/* ===== 1. Altura uniforme ===== */
+.search-group .form-control,
+.search-group .input-group-text,
+.filter-btn {
+    height: 2.5rem;
+    border-radius: 0;
+}
+
+/* Dejamos redondeado sólo en los extremos */
+.search-group .input-group-text {
+    border-top-left-radius: .375rem;
+    border-bottom-left-radius: .375rem;
+}
+
+/* El input y el botón de filtro, estilos finales */
+.search-group .form-control {
+    border-radius: 5px 0 0 5px;
+    min-width: 180px;
+    box-shadow: none;
+    border: 1px solid #ccc;
+    background: #f5f7fa;
+    color: #111;
+    display: flex;
+    transition: box-shadow 0.2s, border-color 0.2s, background 0.2s, color 0.2s;
+}
+
+.search-group .filter-btn {
+    border-radius: 0 5px 5px 0;
+    border: 1px solid #ccc;
+    background: #f5f7fa;
+    transition: box-shadow 0.2s, border-color 0.2s, background 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    padding: 0 1.1rem;
+    height: 40px;
+}
+
+/* Para la imagen dentro del botón */
+.filter-btn img {
+    display: block;
+    margin: auto;
+}
+
+/* Agrupación visual de búsqueda y botón filtro */
+.search-group {
+    display: flex;
+    align-items: stretch;
+    max-width: 400px;
+    width: 100%;
+}
+
+.search-group .form-control:focus,
+.search-group .form-control.active .search-group .form-control:active,
+.search-group .filter-btn:focus,
+.search-group .filter-btn.active,
+.search-group .filter-btn:active {
+    background: #ededed;
+    color: #111;
+    border-color: #150b63 !important;
+    border-left: 1px solid #150b63 !important;
+}
+
+.search-group .filter-btn:focus,
+.search-group .filter-btn.active,
+.search-group .filter-btn:active {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: #150b63 !important;
+    border-left: 1px solid #150b63 !important;
+}
+
+/* Tarjetas de respuesta: borde y fondo según estado evaluada */
+.card-evaluada {
+    border-left: 6px solid #198754 !important;
+    background-color: #f6fff8 !important;
+}
+.card-no-evaluada {
+    border-left: 6px solid #dc3545 !important;
+    background-color: #fff5f5 !important;
+}
+
+/* Animación de levantarse para respuesta-card */
+.respuesta-card {
+    box-shadow: 0 4px 16px rgba(21, 11, 99, 0.08);
+    border: none;
+    border-radius: 16px;
+    transition: transform 1.5s, box-shadow 1.5s, background 1.5s;
+    background: #fff;
+    min-height: 140px;
+    position: relative;
+    cursor: pointer;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0;
+}
+.respuesta-card:hover {
+    box-shadow: 0 8px 32px rgba(0, 187, 240, 0.18), 0 4px 16px rgba(21, 11, 99, 0.08);
+    transform: translateY(-8px) scale(1.03)!important;
+    background: #f8fcff;
+}
+
+#respuestasContainer .respuesta-card {
+    flex: 1 1 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-left: 0 !important;
+}
+
+.respuesta-card .card-body {
+    padding: 1.25rem 1.25rem 2.2rem 1.25rem !important;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+}
+
+.respuesta-card .card-title,
+.respuesta-card p {
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100%;
+}
+
+.respuesta-card .badge {
+    position: absolute;
+    left: 1.25rem;
+    bottom: 1rem;
+    margin-top: 0;
+    font-size: 0.82rem;
+    padding: 0.35em 0.7em;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 4px rgba(21,11,99,0.08);
+}
+
+/* Añade estas reglas al final del archivo */
+#respuestasContainer>.col-md-6 {
+    display: flex;
+}
+
+#respuestasContainer>.col-md-6>div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.respuesta-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* MODAL RESPUESTA (igual estilo que preguntas) */
+.modal-respuesta {
+    position: fixed;
+    z-index: 2000;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+.modal-respuesta:not(.d-none) {
+    pointer-events: auto;
+}
+.modal-respuesta .modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(30, 30, 60, 0.45);
+    backdrop-filter: blur(4px);
+    z-index: 1;
+    transition: opacity 0.3s;
+}
+.modal-respuesta .modal-dialog {
+    position: relative;
+    z-index: 2;
+    min-width: 340px;
+    max-width: 95vw;
+    background: transparent;
+    animation-duration: 0.4s !important;
+}
+.modal-respuesta .modal-content {
+    background: #fff;
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 32px rgba(21,11,99,0.18);
+    border: none;
+}
+body.modal-respuesta-open {
+    overflow: hidden !important;
+}
+body.modal-respuesta-open > *:not(.modal-respuesta) {
+    filter: blur(2.5px) grayscale(0.1);
+    pointer-events: none !important;
+    user-select: none;
+}
+@media (max-width: 600px) {
+    .modal-respuesta .modal-dialog {
+        min-width: 95vw;
+        padding: 0 8px;
+    }
+}
+
+/* Animaciones para modales */
+.blur-in {
+    animation: blur-in 0.1s linear both;
+}
+@keyframes blur-in {
+    0% {
+        filter: blur(12px);
+        opacity: 0;
+    }
+    100% {
+        filter: blur(0);
+        opacity: 1;
+    }
+}
+.blur-out {
+    animation: blur-out 0.4s linear both;
+}
+@keyframes blur-out {
+    0% {
+        filter: blur(.01px);
+    }
+    100% {
+        filter: blur(12px);
+        opacity: 0;
+    }
+}

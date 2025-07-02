@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title>Concurso ACM</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="../static/css/index.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../static/css/base.css">
+
+
+</head>
+
+<body>
+    <!-- Header Section Fijo -->
+    <header class="header_section fixed-top">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg custom_nav-container">
+                <a class="navbar-brand" href="index.html">
+                    <span>Concurso ACM</span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="participantes.html">Participantes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="equipos.html">Equipos</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Gestión del Concurso
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="preguntas.html">Preguntas</a></li>
+                                <li><a class="dropdown-item" href="asignar_preguntas.html">Asignar Preguntas</a>
+                                </li>
+                                <li><a class="dropdown-item" href="regiones.html">Regiones</a></li>
+                                <li><a class="dropdown-item" href="jefes_delegacion.html">Jefes de Delegación</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Evaluación
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="responder_preguntas.html">Responder Preguntas</a>
+                                </li>
+                                <li><a class="dropdown-item" href="respuestas.html">Respuestas</a></li>
+                                <li><a class="dropdown-item" href="resultados.html">Resultados</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <!-- Login a la derecha -->
+                    <div class="d-flex">
+                        <a class="btn btn-login" href="login.html">
+                            <i class="fa fa-user me-1"></i> Login
+                        </a>
+                    </div>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- Fin del Header -->
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7 hero-content">
+                    <h1 class="hero-title">Concurso Mundial ACM de Programación</h1>
+                    <p class="hero-subtitle">Celebrando la excelencia en programación y fomentando el talento joven en
+                        computación a nivel global</p>
+                    <div class="d-flex gap-3 hero-buttons">
+                        <a href="participantes.html" class="btn btn-hero-primary">Ver Participantes</a>
+                        <a href="resultados.html" class="btn btn-hero-secondary">Ver Resultados</a>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-none d-lg-block">
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80"
+                        alt="Equipo programando" class="img-fluid rounded-3 shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Acerca del Concurso</h2>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
+                        alt="Competencia de programación" class="img-fluid about-img">
+                </div>
+                <div class="col-lg-6 about-content">
+                    <h3>El evento más prestigioso de programación competitiva</h3>
+                    <p>El Concurso Mundial de Programación patrocinado por ACM es celebrado anualmente con los equipos
+                        ganadores de las distintas regiones concursantes (Asia, África, Europa, Australia, América
+                        Latina, América del Norte y América del Sur).</p>
+                    <p>Este año el concurso tiene características especiales permitiendo por cada región la inscripción
+                        de 1 equipo "Junior" para fomentar el aprendizaje de la programación en edades tempranas. Los
+                        integrantes de los equipos Junior no podrán tener más de 8 años de edad.</p>
+                    <p>Cada delegación podrá traer hasta 15 concursantes, que podrán formar equipos de hasta 3 personas.
+                        Se permiten 2 equipos de competencia y 1 equipo Junior por región.</p>
+                    <a href="participantes.html" class="btn btn-hero-primary mt-3">Ver Participantes</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Características del Concurso</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <h4>Participación Global</h4>
+                        <p>Equipos de 7 regiones diferentes compitiendo por el título mundial. Representantes de Asia,
+                            África, Europa, Australia y América.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <h4>Categoría Junior</h4>
+                        <p>Nueva categoría para fomentar el talento en programación desde edades tempranas.
+                            Participantes menores de 8 años con preguntas adaptadas.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h4>Sistema de Evaluación</h4>
+                        <p>50+ preguntas con diferentes niveles de dificultad y sistemas de calificación según su tipo
+                            (Clase A y Clase B).</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>Equipos Dinámicos</h4>
+                        <p>Los jefes de delegación pueden reorganizar los equipos durante los 3 días que dura el
+                            concurso, maximizando las oportunidades.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Resultados en Tiempo Real</h4>
+                        <p>Seguimiento de puntuaciones por equipo, región y país. Estadísticas detalladas disponibles
+                            para todos los participantes.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <h4>Reconocimientos</h4>
+                        <p>Premios para equipos ganadores por categoría, región con mayor puntuación y país destacado.
+                            Reconocimiento a preguntas destacadas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links Section -->
+    <section class="quick-links-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Accesos Rápidos</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="quick-link-card">
+                        <h4>Participantes</h4>
+                        <ul>
+                            <li><a href="participantes.html">Listado completo de participantes</a></li>
+                            <li><a href="participantes.html?filter=junior">Participantes Junior</a></li>
+                            <li><a href="participantes.html?filter=byRegion">Participantes por región</a></li>
+                            <li><a href="participantes.html?filter=byCountry">Participantes por país</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="quick-link-card">
+                        <h4>Equipos</h4>
+                        <ul>
+                            <li><a href="equipos.html">Todos los equipos</a></li>
+                            <li><a href="equipos.html?filter=competencia">Equipos de competencia</a></li>
+                            <li><a href="equipos.html?filter=junior">Equipos Junior</a></li>
+                            <li><a href="equipos.html?filter=top">Equipos destacados</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="quick-link-card">
+                        <h4>Resultados</h4>
+                        <ul>
+                            <li><a href="resultados.html">Resultados por día</a></li>
+                            <li><a href="resultados.html?filter=final">Resultados finales</a></li>
+                            <li><a href="resultados.html?filter=region">Resultados por región</a></li>
+                            <li><a href="resultados.html?filter=country">Resultados por país</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>El Concurso en Números</h2>
+            </div>
+            <div class="row text-center">
+                <div class="col-6 col-md-3 stat-item">
+                    <div class="stat-number" id="teams-count">0</div>
+                    <div class="stat-label">Equipos</div>
+                </div>
+                <div class="col-6 col-md-3 stat-item">
+                    <div class="stat-number" id="participants-count">0</div>
+                    <div class="stat-label">Participantes</div>
+                </div>
+                <div class="col-6 col-md-3 stat-item">
+                    <div class="stat-number" id="countries-count">0</div>
+                    <div class="stat-label">Países</div>
+                </div>
+                <div class="col-6 col-md-3 stat-item">
+                    <div class="stat-number" id="questions-count">0</div>
+                    <div class="stat-label">Preguntas</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <a href="index.html" class="footer-logo">
+                        Concurso ACM <i class="fas fa-laptop-code"></i>
+                    </a>
+                    <div class="footer-about">
+                        <p>El Concurso Mundial de Programación patrocinado por ACM es el evento más prestigioso de
+                            programación competitiva a nivel global, reuniendo a los mejores talentos de todas las
+                            regiones del mundo.</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-5 mb-md-0">
+                    <div class="footer-links">
+                        <h4>Enlaces</h4>
+                        <ul>
+                            <li><a href="index.html">Inicio</a></li>
+                            <li><a href="participantes.html">Participantes</a></li>
+                            <li><a href="equipos.html">Equipos</a></li>
+                            <li><a href="resultados.html">Resultados</a></li>
+                            <li><a href="login.html">Login</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-5 mb-md-0">
+                    <div class="footer-links">
+                        <h4>Recursos</h4>
+                        <ul>
+                            <li><a href="preguntas.html">Preguntas</a></li>
+                            <li><a href="regiones.html">Regiones</a></li>
+                            <li><a href="jefes_delegacion.html">Jefes de Delegación</a></li>
+                            <li><a href="asignar_preguntas.html">Asignar Preguntas</a></li>
+                            <li><a href="responder_preguntas.html">Responder Preguntas</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-contact">
+                        <h4>Contacto</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> Sede Central ACM, Nueva York, EE.UU.</p>
+                        <p><i class="fas fa-phone-alt"></i> +1 (212) 555-0100</p>
+                        <p><i class="fas fa-envelope"></i> info@acm-contest.org</p>
+                        <p><i class="fas fa-calendar-alt"></i> 24-26 Octubre 2023</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Concurso Mundial ACM de Programación. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../static/js/index.js"></script>
+    <script src="../static/js/auth-guard.js"></script>
+    <script src="../static/js/user-menu.js"></script>
+    <script src="../static/js/role-guard.js"></script>
+    <script>
+        // Aplica el filtro de rol inmediatamente tras login/redirección
+        if (localStorage.getItem('userRole') === 'PARTICIPANTE' && window.handleParticipant) {
+            window.handleParticipant();
+        } else if (localStorage.getItem('userRole') === 'JEFE_DELEGACION' && window.handleDelegationChief) {
+            window.handleDelegationChief();
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+.card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  margin-bottom: 30px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+.card-header {
+  background: #150B63;
+  color: #fff;
+  padding: 20px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.card-body {
+  padding: 25px;
+}
+.questions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 500px;
+  overflow-y: auto;
+}
+.question-item {
+  padding: 20px;
+  border-bottom: 1px solid #dee2e6;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.question-item:hover {
+  background: #f8f9ff;
+}
+.question-item.active {
+  background-color: #eef2ff;
+  border-left: 4px solid #150B63;
+}
+.question-content {
+  color: #6c757d;
+  font-size: 0.95rem;
+}
+.no-questions {
+  text-align: center;
+  margin-top: 30px;
+}
+.no-questions i {
+  font-size: 2rem;
+  color: #6c757d;
+}
+.no-questions p {
+  margin-top: 10px;
+  color: #6c757d;
+}
+.answer-form {
+  margin-top: 20px;
+}
+.answer-form textarea {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  padding: 10px;
+}
+.response-status {
+  margin-top: 15px;
+  font-weight: bold;
+}
+.response-status.success {
+  color: #198754;
+}
+.response-status.error {
+  color: #dc3545;
+}
+.btn-block {
+  width: 100%;
+}
+.btn-primary {
+  background: #4361ee;
+  border: none;
+}
+/* Estilo para textarea deshabilitado */
+.answer-form textarea:disabled {
+  background-color: #f8f9fa;
+  cursor: not-allowed;
+}
+
+/* Estilo para botón deshabilitado */
+.btn-primary:disabled {
+  background-color: #6c757d !important;
+  cursor: not-allowed;
+}
+
+/* Estilo para items de preguntas respondidas */
+.question-item.answered {
+  background-color: #f8f9fa;
+  border-left: 4px solid #6c757d;
+  color: #6c757d;
+}
+
+.question-item.answered:hover {
+  background-color: #e9ecef;
+  cursor: default;
+}

@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+
+
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Ubuntu', sans-serif;
+    background: linear-gradient(-45deg, #6e8efb, #a777e3, #fbc2eb, #a18cd1);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.login-container {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.303);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-container h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #333;
+}
+
+.form-control {
+    border-radius: 30px;
+    padding: 0.75rem 1.5rem;
+}
+
+.btn-primary {
+    border-radius: 30px;
+    background: #6e8efb;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.btn-primary:hover {
+    background: #5a7be0;
+}
+
+.text-muted {
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.text-muted a {
+    color: #6e8efb;
+    text-decoration: none;
+}
+
+.text-muted a:hover {
+    text-decoration: underline;
+}
+
+/* Sobrescribe animación de entrada del modal */
+.modal.fade .modal-dialog {
+    transform: scale(0.8);
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    opacity: 0;
+}
+
+.modal.fade.show .modal-dialog {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.toast-container {
+    z-index: 1055;
+}
+
+.toast {
+    border-radius: 10px;
+    font-size: 0.9rem;
+}
