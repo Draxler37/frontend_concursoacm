@@ -53,7 +53,7 @@ $(document).ready(function () {
     function obtenerIdPaisJefeDelegacion() {
         const username = localStorage.getItem('username');
         $.ajax({
-            url: `http://localhost:8080/jefes-delegacion/pais?nombre=${username}`,
+            url: `https://apiconcursoacm-production.up.railway.app/jefes-delegacion/pais?nombre=${username}`,
             method: 'GET',
             success: function (response) {
                 idPais = response;
@@ -72,7 +72,7 @@ $(document).ready(function () {
         $('#no-equipos').hide();
 
         $.ajax({
-            url: `http://localhost:8080/equipos?paisId=${idPais}`,
+            url: `c/equipos?paisId=${idPais}`,
             method: 'GET',
             success: function (response) {
                 equipos = response;
@@ -132,7 +132,7 @@ $(document).ready(function () {
     // Cargar participantes que están en el equipo
     function cargarParticipantesEnEquipo() {
         $.ajax({
-            url: `http://localhost:8080/participantes/buscar?idPais=${idPais}&idEquipo=${equipoSeleccionado.idEquipo}`,
+            url: `https://apiconcursoacm-production.up.railway.app/participantes/buscar?idPais=${idPais}&idEquipo=${equipoSeleccionado.idEquipo}`,
             method: 'GET',
             success: function (response) {
                 participantesEnEquipo = response;
@@ -178,7 +178,7 @@ $(document).ready(function () {
     // Cargar participantes disponibles (sin equipo)
     function cargarParticipantesDisponibles() {
         $.ajax({
-            url: `http://localhost:8080/participantes/sin-equipo/pais/${idPais}`,
+            url: `https://apiconcursoacm-production.up.railway.app/participantes/sin-equipo/pais/${idPais}`,
             method: 'GET',
             success: function (response) {
                 participantesDisponibles = response;
@@ -226,7 +226,7 @@ $(document).ready(function () {
         checkAuth();
 
         $.ajax({
-            url: `http://localhost:8080/participantes/${idParticipante}/quitar-equipo/${equipoSeleccionado.idEquipo}`,
+            url: `https://apiconcursoacm-production.up.railway.app/participantes/${idParticipante}/quitar-equipo/${equipoSeleccionado.idEquipo}`,
             method: 'PUT',
             headers: {
                 'Authorization': `Basic ${getAuthToken()}`
@@ -253,7 +253,7 @@ $(document).ready(function () {
         checkAuth();
 
         $.ajax({
-            url: `http://localhost:8080/participantes/${idParticipante}/asignar-equipo/${equipoSeleccionado.idEquipo}`,
+            url: `https://apiconcursoacm-production.up.railway.app/participantes/${idParticipante}/asignar-equipo/${equipoSeleccionado.idEquipo}`,
             method: 'PUT',
             headers: {
                 'Authorization': `Basic ${getAuthToken()}`
