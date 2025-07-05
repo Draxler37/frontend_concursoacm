@@ -21,6 +21,7 @@
 
     // Función para manejar los elementos que deben ocultarse para JEFE_DELEGACION
     function handleDelegationChief() {
+        console.log('[role-guard] Ejecutando handleDelegationChief, DOM ready:', document.readyState);
         showAllElements(); // Primero muestra todo para limpiar estados anteriores
 
         // Oculta botones de añadir y eliminar en todas las páginas
@@ -31,10 +32,18 @@
         document.querySelectorAll('#btnAsignarTodos, #btnAsignarSolo').forEach(forceHideElement);
 
         // Oculta elementos del menú específicos para JEFE_DELEGACION
-        document.querySelectorAll('a[href="preguntas.html"]').forEach(el => { if (el.closest('li')) el.closest('li').style.display = 'none'; });
-        document.querySelectorAll('a[href="respuestas.html"]').forEach(el => { if (el.closest('li')) el.closest('li').style.display = 'none'; });
-        document.querySelectorAll('a[href="regiones.html"]').forEach(el => { if (el.closest('li')) el.closest('li').style.display = 'none'; });
-        document.querySelectorAll('a[href="responder_preguntas.html"]').forEach(el => { if (el.closest('li')) el.closest('li').style.display = 'none'; });
+        ['preguntas.html', 'respuestas.html', 'regiones.html', 'responder_preguntas.html'].forEach(function(href) {
+            document.querySelectorAll('a[href="' + href + '"]').forEach(function(el) {
+                const li = el.closest('li');
+                if (li) {
+                    li.style.display = 'none';
+                    console.log('[role-guard] Ocultando <li> para', href);
+                } else {
+                    el.style.display = 'none';
+                    console.log('[role-guard] Ocultando <a> para', href);
+                }
+            });
+        });
 
         // Oculta botones específicos
         document.querySelectorAll('.btn-jefe-delegacion').forEach(el => el.style.display = 'none');
