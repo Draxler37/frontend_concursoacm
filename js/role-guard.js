@@ -32,8 +32,10 @@
         document.querySelectorAll('#btnAsignarTodos, #btnAsignarSolo').forEach(forceHideElement);
 
         // Oculta elementos del menú específicos para JEFE_DELEGACION
-        ['preguntas.html', 'respuestas.html', 'regiones.html', 'responder_preguntas.html'].forEach(function(href) {
-            document.querySelectorAll('a[href="' + href + '"]').forEach(function(el) {
+        ['preguntas.html', 'respuestas.html', 'regiones.html', 'responder_preguntas.html'].forEach(function (href) {
+            const links = document.querySelectorAll('a[href="' + href + '"]');
+            console.log(`[role-guard] Encontrados ${links.length} enlaces para ${href}`);
+            links.forEach(function (el) {
                 const li = el.closest('li');
                 if (li) {
                     li.style.display = 'none';
