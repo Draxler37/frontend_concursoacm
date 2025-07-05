@@ -334,13 +334,5 @@
 <script src="js/auth-guard.js"></script>
 <script src="js/user-menu.js"></script>
 <script src="js/role-guard.js"></script>
-<script>
-    // Aplica el filtro de rol inmediatamente tras login/redirección
-    if (localStorage.getItem('userRole') === 'PARTICIPANTE' && window.handleParticipant) {
-        window.handleParticipant();
-    } else if (localStorage.getItem('userRole') === 'JEFE_DELEGACION' && window.handleDelegationChief) {
-        window.handleDelegationChief();
-    }
-</script>
 
 </html>
