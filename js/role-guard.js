@@ -1,4 +1,3 @@
-// role-guard.js
 (function () {
     // Solo ejecuta si el usuario está autenticado
     const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';

@@ -19,64 +19,6 @@
     z-index: -1;
 }
 
-#toggleFiltrosRegionesBtn {
-    cursor: pointer;
-    transition: color 0.2s, transform 0.3s;
-    margin-right: 0.5rem;
-    display: flex;
-    align-items: center;
-}
-
-#filtrosAvanzadosRegiones {
-    background-color: white;
-    max-height: 0;
-    opacity: 0;
-    min-height: 0;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 15px;
-    border-top: 1px solid #150b63;
-    box-shadow: 0 2px 8px rgba(21, 11, 99, 0.06);
-    transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
-}
-
-#filtrosAvanzadosRegiones.show {
-    max-height: 300px;
-    opacity: 1;
-}
-
-.filtro-select {
-    border: none !important;
-    border-radius: 18px !important;
-    background-color: white !important;
-    min-width: 120px;
-    max-width: 260px;
-    width: auto;
-    padding-right: 2.5rem !important;
-    box-shadow: none !important;
-    font-size: 1rem;
-    color: #333;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-.filtro-select:hover {
-    cursor: pointer;
-}
-
-.filtro-select:focus {
-    box-shadow: none !important;
-    border: none !important;
-}
-
-.filtro-select option {
-    color: #333;
-}
-
 .col-md-3 {
     margin-top: 5px;
 }
@@ -230,37 +172,6 @@
     box-shadow: none !important;
     border-color: #150b63 !important;
     border-left: 1px solid #150b63 !important;
-}
-
-#filtroRegiones {
-    display: flex;
-    min-width: 70%;
-    justify-content: center;
-    gap: 10px 0;
-}
-
-#filtroRegiones .col-md-3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 8px;
-    padding-right: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 1 auto;
-    min-width: 120px;
-    max-width: 280px;
-}
-
-@media (max-width: 768px) {
-    #filtroRegiones {
-        gap: 4px 0;
-    }
-
-    #filtroRegiones .col-md-3 {
-        padding-left: 2px;
-        padding-right: 2px;
-    }
 }
 
 .min-vh-100.bg-light {

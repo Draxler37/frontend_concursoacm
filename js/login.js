@@ -56,7 +56,7 @@ $(document).ready(function () {
 
         if (isParticipant) {
             $.ajax(Object.assign({}, ajaxOptions, {
-                url: `https://apiconcursoacm-production.up.railway.app/auth/validar?nombre=${username}`,
+                url: `http://localhost:8080/auth/validar?nombre=${username}`,
                 method: 'GET',
                 success: function (response) {
                     if (response) {
@@ -78,7 +78,7 @@ $(document).ready(function () {
             } else {
                 const credentials = btoa(`${username}:${password}`);
                 $.ajax(Object.assign({}, ajaxOptions, {
-                    url: 'https://apiconcursoacm-production.up.railway.app/auth/login',
+                    url: 'http://localhost:8080/auth/login',
                     method: 'POST',
                     headers: {
                         'Authorization': `Basic ${credentials}`,

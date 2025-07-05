@@ -159,12 +159,12 @@ async function loadData() {
     try {
         // Peticiones paralelas
         const [ganadoresRes, competenciaRes, juniorRes, topPreguntasRes, paisRes, regionRes] = await Promise.all([
-            fetch('https://apiconcursoacm-production.up.railway.app/resultados/ganadores'),
-            fetch('https://apiconcursoacm-production.up.railway.app/resultados/competencia'),
-            fetch('https://apiconcursoacm-production.up.railway.app/resultados/junior'),
-            fetch('https://apiconcursoacm-production.up.railway.app/resultados/top-preguntas-junior'),
-            fetch('https://apiconcursoacm-production.up.railway.app/resultados/pais-mayor-puntuacion'),
-            fetch('https://apiconcursoacm-production.up.railway.app/resultados/region-mayor-puntuacion')
+            fetch('http://localhost:8080/resultados/ganadores'),
+            fetch('http://localhost:8080/resultados/competencia'),
+            fetch('http://localhost:8080/resultados/junior'),
+            fetch('http://localhost:8080/resultados/top-preguntas-junior'),
+            fetch('http://localhost:8080/resultados/pais-mayor-puntuacion'),
+            fetch('http://localhost:8080/resultados/region-mayor-puntuacion')
         ]);
 
         // Parsear JSON

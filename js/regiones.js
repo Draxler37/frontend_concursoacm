@@ -46,7 +46,7 @@ $(function () {
             }, { once: true });
             container.appendChild(card);
             // Cargar países para la región (pero no mostrar hasta expandir)
-            $.get('https://apiconcursoacm-production.up.railway.app/paises', { regionId: region.idRegion }).done(function (paises) {
+            $.get('http://localhost:8080/paises', { regionId: region.idRegion }).done(function (paises) {
                 const ul = document.getElementById(`countriesList${region.idRegion}`);
                 if (paises && paises.length > 0) {
                     ul.innerHTML = paises.map(p => `
@@ -112,7 +112,7 @@ $(function () {
             $('#editPaisRegionId').val('');
             $('#editPaisRegionName').val('');
             // Pide los datos completos al backend
-            $.get(`https://apiconcursoacm-production.up.railway.app/paises/${id}`, function (data) {
+            $.get(`http://localhost:8080/paises/${id}`, function (data) {
                 $('#editPaisId').val(data.idPais);
                 $('#editPaisName').val(data.nombrePais || '');
                 $('#editPaisCodigo').val(data.codigoTelefonico || '');
@@ -140,7 +140,7 @@ $(function () {
 
     // --- Cargar regiones desde backend ---
     function buscarRegiones() {
-        $.get('https://apiconcursoacm-production.up.railway.app/regiones', function (data) {
+        $.get('http://localhost:8080/regiones', function (data) {
             todasLasRegiones = data;
             renderRegiones(todasLasRegiones);
         });
@@ -178,7 +178,7 @@ $(function () {
         if (!regionAEliminar) return;
         $('#btnConfirmarEliminarRegion').prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Eliminando...');
         $.ajax({
-            url: `https://apiconcursoacm-production.up.railway.app/regiones/${regionAEliminar}`,
+            url: `http://localhost:8080/regiones/${regionAEliminar}`,
             method: 'DELETE',
             success: function () {
                 cerrarModalEliminarRegion();
@@ -224,7 +224,7 @@ $(function () {
         if (!paisAEliminar) return;
         $('#btnConfirmarEliminarPais').prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Eliminando...');
         $.ajax({
-            url: `https://apiconcursoacm-production.up.railway.app/paises/${paisAEliminar}`,
+            url: `http://localhost:8080/paises/${paisAEliminar}`,
             method: 'DELETE',
             success: function () {
                 cerrarModalEliminarPais();
@@ -249,7 +249,7 @@ $(function () {
         }
         $('#btnGuardarRegion').prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Guardando...');
         $.ajax({
-            url: `https://apiconcursoacm-production.up.railway.app/regiones/${id}`,
+            url: `http://localhost:8080/regiones/${id}`,
             method: 'PUT',
             contentType: 'application/json',
             data: JSON.stringify({ idRegion: id, nombreRegion: nombre }),
@@ -278,7 +278,7 @@ $(function () {
         }
         $('#btnGuardarPais').prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Guardando...');
         $.ajax({
-            url: `https://apiconcursoacm-production.up.railway.app/paises/${id}`,
+            url: `http://localhost:8080/paises/${id}`,
             method: 'PUT',
             contentType: 'application/json',
             data: JSON.stringify({
@@ -326,7 +326,7 @@ $(function () {
         }
         $('#btnCrearRegion').prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Creando...');
         $.ajax({
-            url: 'https://apiconcursoacm-production.up.railway.app/regiones',
+            url: 'http://localhost:8080/regiones',
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({ nombreRegion: nombre }),
@@ -401,7 +401,7 @@ $(function () {
         }
         $('#btnCrearPais').prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Creando...');
         $.ajax({
-            url: 'https://apiconcursoacm-production.up.railway.app/paises',
+            url: 'http://localhost:8080/paises',
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({

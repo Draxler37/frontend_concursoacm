@@ -9,7 +9,7 @@ $(function () {
         const $select = $('#filtroCategoriaEquipo, #addCategoriaEquipo');
         $select.empty();
         $select.append('<option value="">Seleccione una categoría</option>');
-        $.get('https://apiconcursoacm-production.up.railway.app/equipos/categorias', function (data) {
+        $.get('http://localhost:8080/equipos/categorias', function (data) {
             allCategorias = data;
             data.forEach(function (item) {
                 $select.append(`<option value="${item.id}">${item.nombre}</option>`);
@@ -22,7 +22,7 @@ $(function () {
         const $select = $('#filtroPaisEquipo, #addPaisEquipo');
         $select.empty();
         $select.append('<option value="">Seleccione un país</option>');
-        $.get('https://apiconcursoacm-production.up.railway.app/paises', function (data) {
+        $.get('http://localhost:8080/paises', function (data) {
             allPaises = data;
             data.forEach(function (item) {
                 $select.append(`<option value="${item.idPais}">${item.nombrePais}</option>`);
@@ -97,7 +97,7 @@ $(function () {
         questionsList.innerHTML = '';
         const credentials = btoa('claudia:yocy2000');
         $.ajax({
-            url: `https://apiconcursoacm-production.up.railway.app/equipos-preguntas/equipo/${teamId}`,
+            url: `http://localhost:8080/equipos-preguntas/equipo/${teamId}`,
             method: 'GET',
             headers: {
                 'Authorization': `Basic ${credentials}`
@@ -238,7 +238,7 @@ $(function () {
 
     // --- Contadores de equipos desde backend ---
     function cargarContadoresEquipos() {
-        $.get('https://apiconcursoacm-production.up.railway.app/equipos-preguntas/contadores', function (data) {
+        $.get('http://localhost:8080/equipos-preguntas/contadores', function (data) {
             animateCounter(document.getElementById('totalEquipos'), 0, data.total, 600);
             animateCounter(document.getElementById('equiposConPreguntas'), 0, data.conPreguntas, 600);
             animateCounter(document.getElementById('equiposSinPreguntas'), 0, data.sinPreguntas, 600);
@@ -348,7 +348,7 @@ $(function () {
         const idCategoria = $('#filtroCategoriaEquipo').val();
         const idPais = $('#filtroPaisEquipo').val();
         const asignado = getAsignadoFiltro();
-        let url = 'https://apiconcursoacm-production.up.railway.app/equipos-preguntas/buscar-equipos-asignacion?';
+        let url = 'http://localhost:8080/equipos-preguntas/buscar-equipos-asignacion?';
         if (nombre) url += `nombre=${encodeURIComponent(nombre)}&`;
         if (idCategoria) url += `idCategoria=${idCategoria}&`;
         if (idPais) url += `idPais=${idPais}&`;
@@ -388,7 +388,7 @@ $(function () {
     // --- Filtros y búsqueda ---
     function todosLosEquiposFiltrados() {
         let equipos = todosLosEquipos;
-        const texto = $('#filtroNombreEquipoAsignar').val()?.trim().toLowerCase() || '';
+        const texto = $('#filtroNombreEquipo').val()?.trim().toLowerCase() || '';
         const filtroAsignacion = $('#filtroAsignacionPreguntas').val();
         if (texto) {
             equipos = equipos.filter(e => e.nombreEquipo.toLowerCase().includes(texto) || (e.pais?.nombre || '').toLowerCase().includes(texto));
@@ -401,7 +401,8 @@ $(function () {
         return equipos;
     }
 
-    $('#filtroNombreEquipoAsignar').on('input', function () {
+    // Cambiado el selector aquí para que funcione el input de búsqueda
+    $('#filtroNombreEquipo').on('input', function () {
         paginaActual = 1;
         renderEquiposPaginados(todosLosEquiposFiltrados());
     });
@@ -422,7 +423,7 @@ $(function () {
         mostrarModalErrorAsignar('¿Desea asignar preguntas a este equipo?', 'advertencia', function () {
             $btn.prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-1"></span>Asignando...');
             $.ajax({
-                url: `https://apiconcursoacm-production.up.railway.app/equipos-preguntas/asignar/${idEquipo}`,
+                url: `http://localhost:8080/equipos-preguntas/asignar/${idEquipo}`,
                 method: 'POST',
                 success: function () {
                     $btn.removeClass('btn-assign').addClass('btn-success').html('<i class="fas fa-check"></i> Asignado');
@@ -446,7 +447,7 @@ $(function () {
         mostrarModalErrorAsignar('¿Estás seguro de asignar preguntas a todos los equipos sin asignación previa?', 'advertencia', function () {
             $btn.prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-2"></span>Asignando...');
             $.ajax({
-                url: 'https://apiconcursoacm-production.up.railway.app/equipos-preguntas/asignar-todos',
+                url: 'http://localhost:8080/equipos-preguntas/asignar-todos',
                 method: 'POST',
                 success: function () {
                     $btn.removeClass('btn-primary').addClass('btn-success').html('<i class="fas fa-check"></i> ¡Completado!');

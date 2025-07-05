@@ -19,7 +19,7 @@ $(function () {
 
     // Obtener todas las preguntas para mapear idPregunta -> texto
     function cargarPreguntas(cb) {
-        $.get('https://apiconcursoacm-production.up.railway.app/preguntas', function (data) {
+        $.get('http://localhost:8080/preguntas', function (data) {
             todasLasPreguntas = data;
             if (typeof cb === 'function') cb();
         });
@@ -192,7 +192,7 @@ $(function () {
 
     // Cargar y mostrar todas las respuestas
     function cargarRespuestas() {
-        $.get('https://apiconcursoacm-production.up.railway.app/respuestas', function (data) {
+        $.get('http://localhost:8080/respuestas', function (data) {
             todasLasRespuestas = data;
             paginaActual = 1;
             renderRespuestasPaginadas(todasLasRespuestasFiltradas());
@@ -220,7 +220,7 @@ $(function () {
 
     // Inicializar: cargar datos y mostrar
     cargarPreguntas(function () {
-        $.get('https://apiconcursoacm-production.up.railway.app/respuestas', function (data) {
+        $.get('http://localhost:8080/respuestas', function (data) {
             todasLasRespuestas = data;
             window.buscarRespuestas();
         }).fail(function () {
@@ -289,7 +289,7 @@ $(function () {
             return;
         }
         $.ajax({
-            url: `https://apiconcursoacm-production.up.railway.app/respuestas/${respuestaAEvaluar.idRespuesta}/calificar`,
+            url: `http://localhost:8080/respuestas/${respuestaAEvaluar.idRespuesta}/calificar`,
             method: 'PUT',
             contentType: 'application/json',
             data: JSON.stringify({ puntuacion: puntuacion }),

@@ -9,7 +9,7 @@ $(function () {
         const $select = $('#filtroCategoriaEquipo, #addCategoriaEquipo');
         $select.empty();
         $select.append('<option value="">Seleccione una categoría</option>');
-        $.get('https://apiconcursoacm-production.up.railway.app/equipos/categorias', function (data) {
+        $.get('http://localhost:8080/equipos/categorias', function (data) {
             allCategorias = data;
             data.forEach(function (item) {
                 $select.append(`<option value="${item.id}">${item.nombre}</option>`);
@@ -22,7 +22,7 @@ $(function () {
         const $select = $('#filtroPaisEquipo, #addPaisEquipo');
         $select.empty();
         $select.append('<option value="">Seleccione un país</option>');
-        $.get('https://apiconcursoacm-production.up.railway.app/paises', function (data) {
+        $.get('http://localhost:8080/paises', function (data) {
             allPaises = data;
             data.forEach(function (item) {
                 $select.append(`<option value="${item.idPais}">${item.nombrePais}</option>`);
@@ -51,7 +51,7 @@ $(function () {
                     <div class="card-body d-flex flex-column h-100 p-3">
                         <div class="d-flex flex-row h-100 align-items-start">
                             <div class="perfil-fija me-3 flex-shrink-0 d-flex align-items-start justify-content-start" style="min-width:72px;max-width:72px;">
-                                <img src="../images/perfil_equipo_defecto.svg" class="rounded-circle perfil-img" alt="Perfil" width="64" height="64">
+                                <img src="../static/images/perfil_equipo_defecto.svg" class="rounded-circle perfil-img" alt="Perfil" width="64" height="64">
                             </div>
                             <div class="datos-equipo flex-grow-1 d-flex flex-column justify-content-between h-100">
                                 <div class="d-flex justify-content-between align-items-start">
@@ -173,7 +173,7 @@ $(function () {
         const nombre = $('#filtroNombreEquipo').val().trim();
         const idCategoria = $('#filtroCategoriaEquipo').val();
         const idPais = $('#filtroPaisEquipo').val();
-        let url = 'https://apiconcursoacm-production.up.railway.app/equipos/buscar?';
+        let url = 'http://localhost:8080/equipos/buscar?';
         if (nombre) url += `nombre=${encodeURIComponent(nombre)}&`;
         if (idCategoria) url += `idCategoria=${idCategoria}&`;
         if (idPais) url += `idPais=${idPais}&`;
@@ -246,7 +246,7 @@ $(function () {
     // Editar equipo
     $(document).on('click', '.btn-editar-equipo', function () {
         const id = $(this).data('id');
-        $.get(`https://apiconcursoacm-production.up.railway.app/equipos/${id}`, function (e) {
+        $.get(`http://localhost:8080/equipos/${id}`, function (e) {
             $('#addNombreEquipo').val(e.nombreEquipo);
             $('#formAddEquipo').data('edit-id', id);
             $('#modalAddEquipo h2').text('Editar Equipo');
@@ -308,7 +308,7 @@ $(function () {
         const id = equipoAEliminar;
         $('#btnConfirmarEliminarEquipo').prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Eliminando...');
         $.ajax({
-            url: `https://apiconcursoacm-production.up.railway.app/equipos/${id}`,
+            url: `http://localhost:8080/equipos/${id}`,
             method: 'DELETE',
             success: function () {
                 cerrarModalEliminarEquipo();
@@ -381,13 +381,13 @@ $(function () {
         };
         const editId = $(this).data('edit-id');
         let ajaxOpts = {
-            url: 'https://apiconcursoacm-production.up.railway.app/equipos',
+            url: 'http://localhost:8080/equipos',
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(equipo),
         };
         if (editId) {
-            ajaxOpts.url = `https://apiconcursoacm-production.up.railway.app/equipos/${editId}`;
+            ajaxOpts.url = `http://localhost:8080/equipos/${editId}`;
             ajaxOpts.method = 'PUT';
         }
         ajaxOpts.success = function () {

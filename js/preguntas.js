@@ -133,16 +133,32 @@ $(function () {
     $('#filtroUsadaPregunta').on('change', function() { buscarPreguntas(); });
 
     window.buscarPreguntas = function() {
-        const texto = $('#filtroTextoPregunta').val().trim();
+        const texto = $('#filtroTextoPregunta').val().trim().toLowerCase();
         const clase = $('#filtroClasePregunta').val();
         const usada = $('#filtroUsadaPregunta').val();
-        let url = 'https://apiconcursoacm-production.up.railway.app/preguntas?';
+        let url = 'http://localhost:8080/preguntas?';
         if (texto) url += `texto=${encodeURIComponent(texto)}&`;
         if (clase) url += `clase=${clase}&`;
         if (usada) url += `usada=${usada}&`;
         url = url.replace(/&$/, '');
         $.get(url, function(data) {
-            todasLasPreguntas = data;
+            // Si el backend no filtra, filtramos aquí:
+            let preguntas = Array.isArray(data) ? data : (data.preguntas || []);
+            // Filtro por texto
+            if (texto) {
+                preguntas = preguntas.filter(p => (p.texto || '').toLowerCase().includes(texto));
+            }
+            // Filtro por clase
+            if (clase) {
+                preguntas = preguntas.filter(p => p.clase && p.clase.nombreClase === clase);
+            }
+            // Filtro por usada
+            if (usada === 'true') {
+                preguntas = preguntas.filter(p => p.usada === true);
+            } else if (usada === 'false') {
+                preguntas = preguntas.filter(p => p.usada === false);
+            }
+            todasLasPreguntas = preguntas;
             paginaActual = 1;
             renderPreguntasPaginadas(todasLasPreguntas);
         }).fail(function(xhr, status, error) {
@@ -156,7 +172,7 @@ $(function () {
         const $select = $('#filtroClasePregunta');
         $select.empty();
         $select.append('<option value="">Cualquier clase</option>');
-        $.get('https://apiconcursoacm-production.up.railway.app/preguntas/clases', function (data) {
+        $.get('http://localhost:8080/preguntas/clases', function (data) {
             data.forEach(function (item) {
                 $select.append(`<option value="${item.nombreClase}">${item.nombreClase}</option>`);
             });
@@ -170,7 +186,7 @@ $(function () {
         const $select = $('#addClasePregunta');
         $select.empty();
         $select.append('<option value="">Seleccione una clase</option>');
-        $.get('https://apiconcursoacm-production.up.railway.app/preguntas/clases', function (data) {
+        $.get('http://localhost:8080/preguntas/clases', function (data) {
             data.forEach(function (item) {
                 $select.append(`<option value="${item.nombreClase}" data-id="${item.idClase}">${item.nombreClase}</option>`);
             });
@@ -240,7 +256,7 @@ $(function () {
     // --- MODAL EDITAR PREGUNTA ---
     $(document).on('click', '.btn-editar-pregunta', function () {
         const id = $(this).data('id');
-        $.get(`https://apiconcursoacm-production.up.railway.app/preguntas/${id}`, function (p) {
+        $.get(`http://localhost:8080/preguntas/${id}`, function (p) {
             $('#addTextoPregunta').val(p.texto);
             cargarClasesModal(function() {
                 $('#addClasePregunta').val(p.clase?.nombreClase || '');
@@ -330,13 +346,13 @@ $(function () {
         };
         const editId = $(this).data('edit-id');
         let ajaxOpts = {
-            url: 'https://apiconcursoacm-production.up.railway.app/preguntas',
+            url: 'http://localhost:8080/preguntas',
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(pregunta),
         };
         if (editId) {
-            ajaxOpts.url = `https://apiconcursoacm-production.up.railway.app/preguntas/${editId}`;
+            ajaxOpts.url = `http://localhost:8080/preguntas/${editId}`;
             ajaxOpts.method = 'PUT';
         }
         ajaxOpts.success = function () {
@@ -381,7 +397,7 @@ $(function () {
         const id = preguntaAEliminar;
         $('#btnConfirmarEliminarPregunta').prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Eliminando...');
         $.ajax({
-            url: `https://apiconcursoacm-production.up.railway.app/preguntas/${id}`,
+            url: `http://localhost:8080/preguntas/${id}`,
             method: 'DELETE',
             success: function () {
                 cerrarModalEliminarPregunta(function() {

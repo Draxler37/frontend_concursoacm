@@ -1,4 +1,3 @@
-// auth-guard.js
 (function () {
     const allowedPages = ['login.html', 'index.html', ''];
     const currentPage = window.location.pathname.split('/').pop();

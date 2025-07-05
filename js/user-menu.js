@@ -25,8 +25,6 @@
         `;
         loginBtn.parentNode.replaceChild(userMenu, loginBtn);
 
-        console.log('Usuario autenticado:', userRole);
-
         // Logout handler
         document.getElementById('logoutBtn').addEventListener('click', function (e) {
             e.preventDefault();

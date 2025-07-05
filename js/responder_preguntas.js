@@ -7,12 +7,12 @@ const idParticipante = localStorage.getItem('participantId');
 // Cargar preguntas asignadas al participante y sus respuestas
 function cargarDatosParticipante() {
     // Cargar preguntas asignadas
-    fetch(`https://apiconcursoacm-production.up.railway.app/equipos-preguntas/participante/${idParticipante}`)
+    fetch(`http://localhost:8080/equipos-preguntas/participante/${idParticipante}`)
         .then(res => res.json())
         .then(data => {
             preguntasAsignadas = data.preguntas;
             // Luego cargar las respuestas
-            return fetch(`https://apiconcursoacm-production.up.railway.app/respuestas/participante/${idParticipante}`);
+            return fetch(`http://localhost:8080/respuestas/participante/${idParticipante}`);
         })
         .then(res => res.ok ? res.json() : [])
         .then(respuestas => {
@@ -54,7 +54,13 @@ function renderPreguntasAsignadas() {
         lista.appendChild(li);
     });
 
-    if (window.handleParticipant) window.handleParticipant();
+    const userRole = localStorage.getItem('userRole');
+    if (userRole === 'JEFE_DELEGACION' && window.handleDelegationChief) {
+        window.handleDelegationChief();
+    }
+    else if (userRole === 'PARTICIPANTE' && window.handleParticipant) {
+        window.handleParticipant();
+    }
 }
 
 // Seleccionar una pregunta para responder
@@ -95,7 +101,7 @@ document.getElementById('form-respuesta').onsubmit = function (e) {
     const respuesta = document.getElementById('respuesta').value.trim();
     if (!respuesta) return;
 
-    fetch(`https://apiconcursoacm-production.up.railway.app/respuestas/responder/${idParticipante}`, {
+    fetch(`http://localhost:8080/respuestas/responder/${idParticipante}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
