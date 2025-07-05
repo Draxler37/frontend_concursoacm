@@ -30,6 +30,7 @@
             e.preventDefault();
             localStorage.removeItem('isAuthenticated');
             localStorage.removeItem('userRole');
+            localStorage.removeItem('authToken');
             window.location.href = 'login.html';
         });
     }

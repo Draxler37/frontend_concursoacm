@@ -238,7 +238,7 @@ $(function () {
 
     // --- Contadores de equipos desde backend ---
     function cargarContadoresEquipos() {
-        $.get('http://localhost:8080/equipos-preguntas/contadores', function (data) {
+        $.get('https://apiconcursoacm-production.up.railway.app/equipos-preguntas/contadores', function (data) {
             animateCounter(document.getElementById('totalEquipos'), 0, data.total, 600);
             animateCounter(document.getElementById('equiposConPreguntas'), 0, data.conPreguntas, 600);
             animateCounter(document.getElementById('equiposSinPreguntas'), 0, data.sinPreguntas, 600);

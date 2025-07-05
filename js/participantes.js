@@ -245,7 +245,7 @@ $(function () {
         const idPais = $('#filtroPais').val();
         const idEquipo = $('#filtroEquipo').val();
         const idRegion = $('#filtroRegion').val();
-        let url = 'http://localhost:8080/participantes/buscar?';
+        let url = 'https://apiconcursoacm-production.up.railway.app/participantes/buscar?';
         if (nombre) url += `nombre=${encodeURIComponent(nombre)}&`;
         if (idPais) url += `idPais=${idPais}&`;
         if (idEquipo) url += `idEquipo=${idEquipo}&`;
@@ -373,7 +373,7 @@ $(document).ready(function () {
     $(document).on('click', '.btn-editar-participante', function () {
         const id = $(this).data('id');
         // Obtener datos del participante
-        $.get(`http://localhost:8080/participantes/${id}`, function (p) {
+        $.get(`https://apiconcursoacm-production.up.railway.app/participantes/${id}`, function (p) {
             // Rellenar el formulario con los datos
             $('#addNombre').val(p.nombre);
             $('#addNumCarnet').val(p.numCarnet);
@@ -430,7 +430,7 @@ $(document).ready(function () {
         const id = participanteAEliminar;
         $('#btnConfirmarEliminarParticipante').prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Eliminando...');
         $.ajax({
-            url: `http://localhost:8080/participantes/${id}`,
+            url: `https://apiconcursoacm-production.up.railway.app/participantes/${id}`,
             method: 'DELETE',
             success: function () {
                 cerrarModalEliminarParticipante();
@@ -484,13 +484,13 @@ $(document).ready(function () {
         };
         const editId = $(this).data('edit-id');
         let ajaxOpts = {
-            url: 'http://localhost:8080/participantes',
+            url: 'https://apiconcursoacm-production.up.railway.app/participantes',
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(participante),
         };
         if (editId) {
-            ajaxOpts.url = `http://localhost:8080/participantes/${editId}`;
+            ajaxOpts.url = `https://apiconcursoacm-production.up.railway.app/participantes/${editId}`;
             ajaxOpts.method = 'PUT';
         }
         ajaxOpts.success = function () {
