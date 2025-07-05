@@ -40,7 +40,7 @@ $(function () {
                 </div>
             </div>
             `;
-            card.querySelector('.pregunta-card').addEventListener('animationend', function() {
+            card.querySelector('.pregunta-card').addEventListener('animationend', function () {
                 animCount--;
                 if (animCount === 0) {
                     document.body.classList.remove('animating-preguntas');
@@ -106,7 +106,7 @@ $(function () {
             ${navHtml}
             </div>
         `);
-        $wrapper.find('.page-link').off('click').on('click', function(e) {
+        $wrapper.find('.page-link').off('click').on('click', function (e) {
             e.preventDefault();
             const accion = $(this).data('page');
             let nueva = pagina;
@@ -128,20 +128,20 @@ $(function () {
     }
 
     // --- Filtros y búsqueda ---
-    $('#filtroTextoPregunta').on('input', function() { buscarPreguntas(); });
-    $('#filtroClasePregunta').on('change', function() { buscarPreguntas(); });
-    $('#filtroUsadaPregunta').on('change', function() { buscarPreguntas(); });
+    $('#filtroTextoPregunta').on('input', function () { buscarPreguntas(); });
+    $('#filtroClasePregunta').on('change', function () { buscarPreguntas(); });
+    $('#filtroUsadaPregunta').on('change', function () { buscarPreguntas(); });
 
-    window.buscarPreguntas = function() {
+    window.buscarPreguntas = function () {
         const texto = $('#filtroTextoPregunta').val().trim().toLowerCase();
         const clase = $('#filtroClasePregunta').val();
         const usada = $('#filtroUsadaPregunta').val();
-        let url = 'http://localhost:8080/preguntas?';
+        let url = 'https://apiconcursoacm-production.up.railway.app/preguntas?';
         if (texto) url += `texto=${encodeURIComponent(texto)}&`;
         if (clase) url += `clase=${clase}&`;
         if (usada) url += `usada=${usada}&`;
         url = url.replace(/&$/, '');
-        $.get(url, function(data) {
+        $.get(url, function (data) {
             // Si el backend no filtra, filtramos aquí:
             let preguntas = Array.isArray(data) ? data : (data.preguntas || []);
             // Filtro por texto
@@ -161,7 +161,7 @@ $(function () {
             todasLasPreguntas = preguntas;
             paginaActual = 1;
             renderPreguntasPaginadas(todasLasPreguntas);
-        }).fail(function(xhr, status, error) {
+        }).fail(function (xhr, status, error) {
             console.error('Error al buscar preguntas:', error);
             $('#preguntasContainer').html('<div class="col-12 text-center text-danger">No se pudo cargar la lista de preguntas.</div>');
         });
@@ -172,7 +172,7 @@ $(function () {
         const $select = $('#filtroClasePregunta');
         $select.empty();
         $select.append('<option value="">Cualquier clase</option>');
-        $.get('http://localhost:8080/preguntas/clases', function (data) {
+        $.get('https://apiconcursoacm-production.up.railway.app/preguntas/clases', function (data) {
             data.forEach(function (item) {
                 $select.append(`<option value="${item.nombreClase}">${item.nombreClase}</option>`);
             });
@@ -186,7 +186,7 @@ $(function () {
         const $select = $('#addClasePregunta');
         $select.empty();
         $select.append('<option value="">Seleccione una clase</option>');
-        $.get('http://localhost:8080/preguntas/clases', function (data) {
+        $.get('https://apiconcursoacm-production.up.railway.app/preguntas/clases', function (data) {
             data.forEach(function (item) {
                 $select.append(`<option value="${item.nombreClase}" data-id="${item.idClase}">${item.nombreClase}</option>`);
             });
@@ -197,7 +197,7 @@ $(function () {
 
     // Mostrar/ocultar filtros avanzados
     let filtrosVisibles = false;
-    $('#toggleFiltrosPreguntasBtn').on('click', function() {
+    $('#toggleFiltrosPreguntasBtn').on('click', function () {
         filtrosVisibles = !filtrosVisibles;
         const $panel = $('#filtrosAvanzadosPreguntas');
         if (filtrosVisibles) {
@@ -221,7 +221,7 @@ $(function () {
         $('#formAddPregunta')[0].reset();
         $('#formAddPregunta').removeData('edit-id');
         $('#formAddPregunta .add-error-msg').remove();
-        cargarClasesModal(function() {
+        cargarClasesModal(function () {
             $('#addClasePregunta').val('');
         });
         $('#addUsada').closest('.mb-3').hide();
@@ -236,7 +236,7 @@ $(function () {
         cerrarModalPregunta();
     });
     // Cerrar modal con Escape
-    $(document).on('keydown', function(e){
+    $(document).on('keydown', function (e) {
         if (e.key === 'Escape' && !$('#modalAddPregunta').hasClass('d-none')) {
             cerrarModalPregunta();
         }
@@ -256,9 +256,9 @@ $(function () {
     // --- MODAL EDITAR PREGUNTA ---
     $(document).on('click', '.btn-editar-pregunta', function () {
         const id = $(this).data('id');
-        $.get(`http://localhost:8080/preguntas/${id}`, function (p) {
+        $.get(`https://apiconcursoacm-production.up.railway.app/preguntas/${id}`, function (p) {
             $('#addTextoPregunta').val(p.texto);
-            cargarClasesModal(function() {
+            cargarClasesModal(function () {
                 $('#addClasePregunta').val(p.clase?.nombreClase || '');
             });
             $('#addPuntuacionMaxima').val(p.puntuacionMaxima);
@@ -291,13 +291,13 @@ $(function () {
         cerrarModalEliminarPregunta();
     });
     // Cerrar modal con Escape
-    $(document).on('keydown', function(e){
+    $(document).on('keydown', function (e) {
         if (e.key === 'Escape' && !$('#modalEliminarPregunta').hasClass('d-none')) {
             cerrarModalEliminarPregunta();
         }
     });
     // Cerrar modal al hacer click fuera del modal-dialog (fix)
-    $('#modalEliminarPregunta').on('mousedown', function(e) {
+    $('#modalEliminarPregunta').on('mousedown', function (e) {
         if (e.target === this) {
             cerrarModalEliminarPregunta();
         }
@@ -331,7 +331,7 @@ $(function () {
             // Si no hay data-id, buscar por nombre en el select
             if (!claseId) {
                 // Buscar en el select de clases cargadas
-                const optionObj = $('#addClasePregunta option').filter(function(){
+                const optionObj = $('#addClasePregunta option').filter(function () {
                     return $(this).val() === claseNombre;
                 });
                 claseId = optionObj.data('id') || optionObj.attr('data-id');
@@ -346,19 +346,19 @@ $(function () {
         };
         const editId = $(this).data('edit-id');
         let ajaxOpts = {
-            url: 'http://localhost:8080/preguntas',
+            url: 'https://apiconcursoacm-production.up.railway.app/preguntas',
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(pregunta),
         };
         if (editId) {
-            ajaxOpts.url = `http://localhost:8080/preguntas/${editId}`;
+            ajaxOpts.url = `https://apiconcursoacm-production.up.railway.app/preguntas/${editId}`;
             ajaxOpts.method = 'PUT';
         }
         ajaxOpts.success = function () {
             $btn.html('<span class="fa fa-check me-2" style="color:#fff;"></span>Guardado')
                 .removeClass('btn-primary').addClass('btn-success');
-            $btn.css({transition: 'background 0.4s, color 0.4s'});
+            $btn.css({ transition: 'background 0.4s, color 0.4s' });
             setTimeout(() => {
                 cerrarModalPregunta();
                 setTimeout(() => {
@@ -397,10 +397,10 @@ $(function () {
         const id = preguntaAEliminar;
         $('#btnConfirmarEliminarPregunta').prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Eliminando...');
         $.ajax({
-            url: `http://localhost:8080/preguntas/${id}`,
+            url: `https://apiconcursoacm-production.up.railway.app/preguntas/${id}`,
             method: 'DELETE',
             success: function () {
-                cerrarModalEliminarPregunta(function() {
+                cerrarModalEliminarPregunta(function () {
                     buscarPreguntas();
                 });
             },
@@ -419,6 +419,6 @@ $(function () {
             complete: function () {
                 $('#btnConfirmarEliminarPregunta').prop('disabled', false).html('<i class="fa fa-trash me-2"></i>Eliminar');
             }
-        });    
+        });
     });
 });

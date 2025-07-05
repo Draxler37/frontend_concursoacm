@@ -53,7 +53,7 @@ $(document).ready(function () {
     function obtenerIdPaisJefeDelegacion() {
         const username = localStorage.getItem('username');
         $.ajax({
-            url: `http://localhost:8080/jefes-delegacion/pais?nombre=${username}`,
+            url: `https://apiconcursoacm-production.up.railway.app/jefes-delegacion/pais?nombre=${username}`,
             method: 'GET',
             success: function (response) {
                 idPais = response;
@@ -72,7 +72,7 @@ $(document).ready(function () {
         $('#no-equipos').hide();
 
         $.ajax({
-            url: `http://localhost:8080/equipos?paisId=${idPais}`,
+            url: `https://apiconcursoacm-production.up.railway.app/equipos?paisId=${idPais}`,
             method: 'GET',
             success: function (response) {
                 equipos = response;

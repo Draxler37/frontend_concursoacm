@@ -17,7 +17,7 @@ function renderJefesDelegacion(jefes) {
                 <div class="card-body d-flex flex-column h-100 p-3">
                     <div class="d-flex flex-row h-100 align-items-start">
                         <div class="perfil-fija me-3 flex-shrink-0 d-flex align-items-start justify-content-start" style="min-width:72px;max-width:72px;">
-                            <img src="../static/images/perfil_participante_defecto.svg" class="rounded-circle perfil-img" alt="Perfil" width="64" height="64">
+                            <img src="../images/perfil_participante_defecto.svg" class="rounded-circle perfil-img" alt="Perfil" width="64" height="64">
                         </div>
                         <div class="datos-jefe-delegacion flex-grow-1 d-flex flex-column justify-content-between h-100">
                             <div class="d-flex justify-content-between align-items-start">
@@ -55,7 +55,7 @@ $(function () {
         $select.empty();
         $select.append('<option value="">Seleccione un país</option>');
         if (regionId) {
-            $.get(`http://localhost:8080/paises?regionId=${regionId}`, function (data) {
+            $.get(`https://apiconcursoacm-production.up.railway.app/paises?regionId=${regionId}`, function (data) {
                 data.forEach(function (item) {
                     $select.append(`<option value="${item.idPais}">${item.nombrePais}</option>`);
                 });
@@ -73,11 +73,11 @@ $(function () {
         });
     }
     // Cargar todos los datos base una sola vez
-    $.get('http://localhost:8080/paises', function (data) {
+    $.get('https://apiconcursoacm-production.up.railway.app/paises', function (data) {
         allPaises = data;
         poblarSelectPaises();
     });
-    $.get('http://localhost:8080/regiones', function (data) {
+    $.get('https://apiconcursoacm-production.up.railway.app/regiones', function (data) {
         allRegiones = data;
         poblarSelectRegiones();
     });
@@ -189,7 +189,7 @@ $(function () {
                         <div class="card-body d-flex flex-column h-100 p-3">
                             <div class="d-flex flex-row h-100 align-items-start">
                                 <div class="perfil-fija me-3 flex-shrink-0 d-flex align-items-start justify-content-start" style="min-width:72px;max-width:72px;">
-                                    <img src="../static/images/perfil_participante_defecto.svg" class="rounded-circle perfil-img" alt="Perfil" width="64" height="64">
+                                    <img src="../images/perfil_participante_defecto.svg" class="rounded-circle perfil-img" alt="Perfil" width="64" height="64">
                                 </div>
                                 <div class="datos-jefe-delegacion flex-grow-1 d-flex flex-column justify-content-between h-100">
                                     <div class="d-flex justify-content-between align-items-start">
@@ -251,7 +251,7 @@ $(function () {
 
     // Cargar todos los jefes de delegación con país y región al inicio
     function cargarJefesDelegacionConPaisRegion() {
-        $.get('http://localhost:8080/jefes-delegacion/con-pais-region', function (data) {
+        $.get('https://apiconcursoacm-production.up.railway.app/jefes-delegacion/con-pais-region', function (data) {
             todosLosJefes = data;
             renderJefesDelegacionPaginados(todosLosJefes);
         });
@@ -288,7 +288,7 @@ $(function () {
         const nombre = $('#filtroNombre').val().trim();
         const idPais = $('#filtroPais').val();
         const idRegion = $('#filtroRegion').val();
-        let url = 'http://localhost:8080/jefes-delegacion/buscar?';
+        let url = 'https://apiconcursoacm-production.up.railway.app/jefes-delegacion/buscar?';
         if (nombre) url += `nombre=${encodeURIComponent(nombre)}&`;
         if (idPais) url += `idPais=${idPais}&`;
         if (idRegion) url += `idRegion=${idRegion}&`;
@@ -426,7 +426,7 @@ $(document).ready(function () {
         const id = jefeDelegacionAEliminar;
         $('#btnConfirmarEliminarJefeDelegacion').prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Eliminando...');
         $.ajax({
-            url: `http://localhost:8080/jefes-delegacion/${id}`,
+            url: `https://apiconcursoacm-production.up.railway.app/jefes-delegacion/${id}`,
             method: 'DELETE',
             success: function () {
                 cerrarModalEliminarJefeDelegacion(function () {
@@ -477,7 +477,7 @@ $(document).ready(function () {
             contraseña: $('#addContrasena').val()
         };
         let ajaxOpts = {
-            url: 'http://localhost:8080/jefes-delegacion',
+            url: 'https://apiconcursoacm-production.up.railway.app/jefes-delegacion',
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(jefeDelegacion),
@@ -518,7 +518,7 @@ $(document).ready(function () {
         const $select = $('#addPais');
         $select.empty();
         $select.append('<option value="">Seleccione un país</option>');
-        $.get('http://localhost:8080/paises', function (data) {
+        $.get('https://apiconcursoacm-production.up.railway.app/paises', function (data) {
             data.forEach(function (pais) {
                 $select.append(`<option value="${pais.idPais}">${pais.nombrePais}</option>`);
             });

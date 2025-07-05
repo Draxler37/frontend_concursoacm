@@ -17,7 +17,7 @@ function renderParticipantes(participantes) {
                 <div class="card-body d-flex flex-column h-100 p-3">
                     <div class="d-flex flex-row h-100 align-items-start">
                         <div class="perfil-fija me-3 flex-shrink-0 d-flex align-items-start justify-content-start" style="min-width:72px;max-width:72px;">
-                            <img src="../static/images/perfil_participante_defecto.svg" class="rounded-circle perfil-img" alt="Perfil" width="64" height="64">
+                            <img src="../images/perfil_participante_defecto.svg" class="rounded-circle perfil-img" alt="Perfil" width="64" height="64">
                         </div>
                         <div class="datos-participante flex-grow-1 d-flex flex-column justify-content-between h-100">
                             <div class="d-flex justify-content-between align-items-start">
@@ -61,7 +61,7 @@ $(function () {
         $select.empty();
         $select.append('<option value="">Seleccione un país</option>');
         if (regionId) {
-            $.get(`http://localhost:8080/paises?regionId=${regionId}`, function (data) {
+            $.get(`https://apiconcursoacm-production.up.railway.app/paises?regionId=${regionId}`, function (data) {
                 data.forEach(function (item) {
                     $select.append(`<option value="${item.idPais}">${item.nombrePais}</option>`);
                 });
@@ -75,7 +75,7 @@ $(function () {
         $select.empty();
         $select.append('<option value="">Seleccione un equipo</option>');
         if (paisId) {
-            $.get(`http://localhost:8080/equipos?paisId=${paisId}`, function (data) {
+            $.get(`https://apiconcursoacm-production.up.railway.app/equipos?paisId=${paisId}`, function (data) {
                 data.forEach(function (item) {
                     $select.append(`<option value="${item.idEquipo}">${item.nombreEquipo}</option>`);
                 });
@@ -93,15 +93,15 @@ $(function () {
         });
     }
     // Cargar todos los datos base una sola vez
-    $.get('http://localhost:8080/paises', function (data) {
+    $.get('https://apiconcursoacm-production.up.railway.app/paises', function (data) {
         allPaises = data;
         poblarSelectPaises();
     });
-    $.get('http://localhost:8080/equipos', function (data) {
+    $.get('https://apiconcursoacm-production.up.railway.app/equipos', function (data) {
         allEquipos = data;
         poblarSelectEquipos();
     });
-    $.get('http://localhost:8080/regiones', function (data) {
+    $.get('https://apiconcursoacm-production.up.railway.app/regiones', function (data) {
         allRegiones = data;
         poblarSelectRegiones();
     });
@@ -550,7 +550,7 @@ $(document).ready(function () {
         const $select = $('#addPais');
         $select.empty();
         $select.append('<option value="">Seleccione un país</option>');
-        $.get('http://localhost:8080/paises', function (data) {
+        $.get('https://apiconcursoacm-production.up.railway.app/paises', function (data) {
             data.forEach(function (item) {
                 $select.append(`<option value="${item.idPais}">${item.nombrePais}</option>`);
             });
