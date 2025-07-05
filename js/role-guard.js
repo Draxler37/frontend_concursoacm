@@ -21,7 +21,6 @@
 
     // Función para manejar los elementos que deben ocultarse para JEFE_DELEGACION
     function handleDelegationChief() {
-        console.log('[role-guard] Ejecutando handleDelegationChief, DOM ready:', document.readyState);
         showAllElements(); // Primero muestra todo para limpiar estados anteriores
 
         // Oculta botones de añadir y eliminar en todas las páginas
@@ -41,16 +40,11 @@
 
         // Buscar todos los elementos li dentro de dropdown-menu
         document.querySelectorAll('.dropdown-menu li').forEach(li => {
-            console.log('[role-guard] Revisando elemento del menú:', li);
             const link = li.querySelector('a[href]');
-            console.log('[role-guard] Revisando enlace:', link);
             if (link) {
                 const href = link.getAttribute('href');
-                console.log('[role-guard] Revisando href:', href);
                 if (menuItemsToHide.some(item => href.includes(item))) {
-                    console.log('[role-guard] Ocultando elemento del menú:', href);
                     li.style.display = 'none';
-                    console.log('[role-guard] Ocultando elemento del menú:', href);
                 }
             }
         });
@@ -70,11 +64,11 @@
 
         // Oculta elementos específicos del menú desplegable para PARTICIPANTE
         const menuItemsToHide = [
-            'preguntas.html',
-            'respuestas.html',
-            'regiones.html',
-            'asignar_preguntas.html',
-            'jefes_delegacion.html'
+            'preguntas',
+            'respuestas',
+            'regiones',
+            'asignar_preguntas',
+            'jefes_delegacion'
         ];
 
         document.querySelectorAll('.dropdown-menu li').forEach(li => {
