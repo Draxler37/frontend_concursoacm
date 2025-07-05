@@ -10,7 +10,7 @@
         document.querySelectorAll('.btn-editar, .btn-eliminar, .btn-editar-equipo, .btn-eliminar-equipo, .btn-editar-participante, .btn-eliminar-participante, .btn-eliminar-jefe-delegacion, .btn-editar-pregunta, .btn-eliminar-pregunta').forEach(el => el.style.display = '');
         document.querySelectorAll('#btnAddEquipo, #btnAddParticipante, #btnAddJefeDelegacion, #btnAddPregunta').forEach(el => el.style.display = '');
         document.querySelectorAll('#btnAsignarTodos, #btnAsignarSolo').forEach(el => el.style.display = '');
-        document.querySelectorAll('.nav-item').forEach(el => el.style.display = '');
+        document.querySelectorAll('.dropdown-menu li').forEach(el => el.style.display = '');
         document.querySelectorAll('.btn-jefe-delegacion').forEach(el => el.style.display = '');
     }
 
@@ -31,7 +31,7 @@
         // Oculta botones de asignar (común a ambos roles)
         document.querySelectorAll('#btnAsignarTodos, #btnAsignarSolo').forEach(forceHideElement);
 
-        // Oculta elementos del menú específicos para JEFE_DELEGACION
+        // Oculta elementos específicos del menú desplegable para JEFE_DELEGACION
         const menuItemsToHide = [
             'preguntas.html',
             'respuestas.html',
@@ -39,14 +39,14 @@
             'responder_preguntas.html'
         ];
 
-        // Buscar todos los elementos li que contengan enlaces a las páginas a ocultar
-        document.querySelectorAll('.nav-item').forEach(li => {
+        // Buscar todos los elementos li dentro de dropdown-menu
+        document.querySelectorAll('.dropdown-menu li').forEach(li => {
             const link = li.querySelector('a[href]');
             if (link) {
                 const href = link.getAttribute('href');
                 if (menuItemsToHide.some(item => href.includes(item))) {
                     li.style.display = 'none';
-                    console.log('[role-guard] Ocultando <li> para', href);
+                    console.log('[role-guard] Ocultando elemento del menú:', href);
                 }
             }
         });
@@ -64,15 +64,16 @@
         document.querySelectorAll('#btnAddEquipo, #btnAddParticipante, #btnAddJefeDelegacion, #btnAddPregunta').forEach(forceHideElement);
         document.querySelectorAll('.btn-eliminar, .btn-eliminar-equipo, .btn-eliminar-participante, .btn-eliminar-jefe-delegacion, .btn-editar, .btn-editar-equipo, .btn-editar-participante, .btn-editar-pregunta').forEach(el => el.style.display = 'none');
 
-        // Oculta elementos del menú específicos para PARTICIPANTE
+        // Oculta elementos específicos del menú desplegable para PARTICIPANTE
         const menuItemsToHide = [
             'preguntas.html',
             'respuestas.html',
             'regiones.html',
-            'asignar_preguntas.html'
+            'asignar_preguntas.html',
+            'jefes_delegacion.html'
         ];
 
-        document.querySelectorAll('.nav-item').forEach(li => {
+        document.querySelectorAll('.dropdown-menu li').forEach(li => {
             const link = li.querySelector('a[href]');
             if (link) {
                 const href = link.getAttribute('href');
