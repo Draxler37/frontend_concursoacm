@@ -41,10 +41,14 @@
 
         // Buscar todos los elementos li dentro de dropdown-menu
         document.querySelectorAll('.dropdown-menu li').forEach(li => {
+            console.log('[role-guard] Revisando elemento del menú:', li);
             const link = li.querySelector('a[href]');
+            console.log('[role-guard] Revisando enlace:', link);
             if (link) {
                 const href = link.getAttribute('href');
+                console.log('[role-guard] Revisando href:', href);
                 if (menuItemsToHide.some(item => href.includes(item))) {
+                    console.log('[role-guard] Ocultando elemento del menú:', href);
                     li.style.display = 'none';
                     console.log('[role-guard] Ocultando elemento del menú:', href);
                 }
