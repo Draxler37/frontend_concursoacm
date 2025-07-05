@@ -33,10 +33,10 @@
 
         // Oculta elementos específicos del menú desplegable para JEFE_DELEGACION
         const menuItemsToHide = [
-            'preguntas.html',
-            'respuestas.html',
-            'regiones.html',
-            'responder_preguntas.html'
+            'preguntas',
+            'respuestas',
+            'regiones',
+            'responder_preguntas'
         ];
 
         // Buscar todos los elementos li dentro de dropdown-menu
